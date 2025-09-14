@@ -1,0 +1,84 @@
+/* ===== About Section ===== */
+.about-section {
+  padding: 5rem 1.25rem; /* use rem instead of px for consistency */
+  background: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* ===== Grid Layout ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-grid.reverse {
+  direction: rtl; /* Flip content order */
+}
+
+.about-grid.reverse .about-text {
+  direction: ltr; /* Keep text normal */
+}
+
+/* ===== Text Styling ===== */
+.about-text h2 {
+  font-size: var(--font-xlarge); /* consistent with index.css */
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.about-text p {
+  font-size: var(--font-medium); /* consistent with body text */
+  color: var(--paragraph-color);
+  opacity: 0.85;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.about-text .btn-primary {
+  padding: 0.75rem 1.75rem;
+  border-radius: 50px;
+  font-size: var(--font-medium);
+}
+
+/* ===== Image Styling ===== */
+.about-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.25);
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.about-image:hover img {
+  transform: scale(1.05);
+}
+
+/* ===== Mobile & Tablet Adjustments ===== */
+@media (max-width: 992px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+  .about-grid.reverse {
+    direction: ltr;
+  }
+
+  .about-image {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}

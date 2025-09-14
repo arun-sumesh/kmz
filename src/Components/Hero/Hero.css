@@ -1,0 +1,179 @@
+/* ===== Hero Section ===== */
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 1.25rem; /* consistent with other sections */
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.5s ease, color 0.5s ease;
+  overflow: hidden;
+  background-image: url(../../assets/wallpaperflare.com_wallpaper.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+/* ===== Hero Container ===== */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  max-width: 1200px;
+  padding: 1.25rem 3.75rem; /* 20px 60px */
+  margin: auto;
+  flex-wrap: wrap;
+  background-color: transparent;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.457);
+  border-radius: 1.25rem; /* 20px */
+}
+
+/* ===== Left Text ===== */
+.hero-text {
+  flex: 1;
+  min-width: 18.75rem; /* 300px */
+  opacity: 0;
+  transform: translateY(2.5rem); /* 40px */
+  animation: fadeSlideIn 1s forwards;
+  background-color: var(--bg-color);
+  transition: background 0.3s, color 0.3s;
+  padding: 1.5625rem 3.75rem; /* 25px 60px */
+  border-radius: 0.75rem;
+}
+
+.hero-text h1 {
+  font-size: clamp(var(--font-xlarge), 5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(1.25rem); /* 20px */
+  animation: fadeSlideIn 1s forwards;
+  animation-delay: 0.3s;
+}
+
+.hero-text h1 span {
+  color: var(--accent-color);
+}
+
+.hero-text p {
+  margin: 1.25rem 0; /* 20px */
+  font-size: var(--font-medium);
+  line-height: 1.5;
+  color: var(--paragraph-color);
+  opacity: 0;
+  transform: translateY(1.25rem); /* 20px */
+  animation: fadeSlideIn 1s forwards;
+  animation-delay: 0.6s;
+}
+
+/* ===== Hero Buttons ===== */
+.hero-buttons {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(1.25rem);
+  animation: fadeSlideIn 1s forwards;
+  animation-delay: 0.9s;
+}
+
+/* Primary Button */
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem; /* 14px 32px */
+  background: var(--accent-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 50px;
+  font-size: var(--font-medium);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-0.1875rem) scale(1.02); /* -3px */
+}
+
+/* Secondary Button */
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  border-radius: 50px;
+  font-size: var(--font-medium);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-0.1875rem) scale(1.02);
+}
+
+/* ===== Right Image ===== */
+.hero-image {
+  flex: 1;
+  min-width: 17.5rem; /* 280px */
+  text-align: center;
+  opacity: 0;
+  transform: translateY(2.5rem);
+  animation: fadeSlideIn 1s forwards;
+  animation-delay: 1.2s;
+}
+
+.hero-image img {
+  max-width: 100%;
+  border-radius: 1.25rem;
+  transition: transform 0.6s ease;
+  animation: float 4s ease-in-out infinite;
+}
+
+.hero-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Animation Keyframes ===== */
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-0.625rem); } /* -10px */
+}
+
+/* ===== Tablet/Mobile Adjustments ===== */
+@media (max-width: 992px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.25rem 2.5rem; /* 20px 40px */
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    max-width: 18.75rem; /* 300px */
+  }
+}

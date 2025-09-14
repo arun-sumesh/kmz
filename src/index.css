@@ -1,0 +1,137 @@
+/* ===== Google Fonts ===== */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto+Condensed:wght@400;600&display=swap");
+
+/* ===== Reset & Box-sizing ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Root Variables ===== */
+:root {
+  --font-base: 16px;
+  --font-small: 0.875rem;  /* ~14px */
+  --font-medium: 1rem;     /* 16px */
+  --font-large: 1.25rem;   /* 20px */
+  --font-xlarge: 2rem;     /* 32px */
+
+  /* Dark mode (default) */
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --heading-color: #ffffff;
+  --paragraph-color: #cfd3d8;
+  --accent-color: #00a2ff;
+
+  /* Scrollbar */
+  --scrollbar-track: #e4e4e4;
+  --scrollbar-thumb: #2cd7b3;
+  --scrollbar-thumb-hover: #1098ab;
+}
+
+/* ===== Light Mode ===== */
+[data-theme="light"] {
+  --bg-color: #fefbf6;
+  --text-color: #222222;
+  --heading-color: #111111;
+  --paragraph-color: #555555;
+}
+
+/* ===== Body ===== */
+body {
+  font-size: var(--font-base);
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Roboto Condensed", sans-serif;
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  scroll-behavior: smooth;
+}
+
+/* ===== Utility ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 80px 0;
+}
+
+/* ===== Typography ===== */
+h1, h2, h3, h4, h5 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  color: var(--heading-color);
+}
+
+h1 { font-size: var(--font-xlarge); }
+h2 { font-size: 1.75rem; }
+h3 { font-size: var(--font-large); }
+h4, h5 { font-size: var(--font-medium); }
+
+p, li, span, a {
+  font-size: var(--font-medium);
+  color: var(--paragraph-color);
+}
+
+/* ===== Links ===== */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: var(--accent-color);
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: var(--font-medium);
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+  background: var(--accent-color);
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
+
+/* ===== Responsive ===== */
+
+/* Tablet */
+@media (max-width: 768px) {
+  :root { --font-base: 14px; }
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1.1rem; }
+  p, li, span, a { font-size: 0.95rem; }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  :root { --font-base: 12px; }
+  h1 { font-size: 1.5rem; font-weight: 600; }
+  h2 { font-size: 1.1rem; font-weight: 600; }
+  h3 { font-size: 1rem; }
+  p, li, span, a { font-size: 0.9rem; }
+}
+
+

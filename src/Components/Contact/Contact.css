@@ -1,0 +1,129 @@
+/* ===== Contact Section ===== */
+.contact {
+  padding: 5rem 1.25rem; /* consistent with about-section */
+  width: 100%;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* ===== Container ===== */
+.contact-container {
+  display: flex;
+  gap: 1.25rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+/* ===== Left: Image ===== */
+.contact-image {
+  flex: 1;
+  min-width: 15.625rem; /* 250px */
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.contact-image::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.35);
+  transition: background-color 0.3s ease;
+}
+
+[data-theme="light"] .contact-image::after {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.contact-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.contact-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Middle: Heading + Paragraph ===== */
+.contact-left {
+  flex: 1;
+  min-width: 15.625rem;
+}
+
+.contact-left h2 {
+  font-size: var(--font-xlarge); /* consistent with headings */
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--heading-color);
+}
+
+.contact-left p {
+  font-size: var(--font-medium); /* body text */
+  color: var(--paragraph-color);
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+/* ===== Right: Form ===== */
+.contact-right {
+  flex: 1;
+  min-width: 15.625rem;
+}
+
+.contact-right form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-right input,
+.contact-right textarea {
+  padding: 0.75rem 0.9375rem; /* 12px 15px */
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 0.375rem;
+  font-size: var(--font-medium);
+  outline: none;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: border 0.3s ease, background 0.3s ease;
+}
+
+.contact-right input:focus,
+.contact-right textarea:focus {
+  border: 1px solid var(--accent-color);
+}
+
+.contact-right button {
+  align-self: flex-start;
+  padding: 0.75rem 1.5625rem; /* 12px 25px */
+  font-size: var(--font-medium);
+  font-weight: 600;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  background: var(--accent-color);
+  color: var(--text-color);
+  transition: 0.3s ease, transform 0.3s ease;
+}
+
+.contact-right button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+  .contact-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .contact-right button {
+    width: 100%;
+  }
+}
