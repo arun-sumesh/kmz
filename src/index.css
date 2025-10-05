@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* tailwind.css or global styles */
+.perspective-1000 { perspective: 1000px; }
+.backdrop-blur-md { backdrop-filter: blur(8px); } /* match existing plugin */
+
+
+/* Keep only scrollbar styling if you want */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #e4e4e4;
+}
+::-webkit-scrollbar-thumb {
+  background: #2cd7b3;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1098ab;
+}
