@@ -47,98 +47,98 @@ export default function AboutPageMinimal() {
   return (
     <div className="min-h-screen bg-bg dark:bg-darkbg text-text dark:text-darktext font-body flex flex-col">
       <div className="max-w-4xl mx-auto px-6 py-20 w-full">
-        {/* Simple header */}
+        {/* Header */}
         <header className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-heading font-bold text-heading dark:text-darkheading">About KMZ Tech</h1>
-          <p className="mt-3 text-base text-paragraph dark:text-darkparagraph">
+          <h1 className="text-4xl md:text-5xl font-heading font-bold text-heading dark:text-darkheading">
+            About KMZ Tech
+          </h1>
+          <p className="mt-4 text-base md:text-lg text-paragraph dark:text-darkparagraph leading-relaxed">
             We build scalable, secure, and elegant web solutions that empower businesses to thrive in the digital age.
           </p>
         </header>
 
-        {/* Mission / Vision side-by-side minimal */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-          <article className="rounded-xl overflow-hidden bg-white dark:bg-darkbg border border-gray-100 dark:border-gray-800 p-4 flex items-start gap-4">
-            <img src={missionImg} alt="mission" className="w-16 h-16 object-cover rounded-md flex-none" />
-            <div>
-              <h3 className="font-heading font-semibold text-heading dark:text-darkheading">Our Mission</h3>
-              <p className="mt-2 text-sm text-paragraph dark:text-darkparagraph">
-                To deliver future-proof digital experiences through thoughtful design, robust architecture, and seamless performance.
-              </p>
-            </div>
-          </article>
-
-          <article className="rounded-xl overflow-hidden bg-white dark:bg-darkbg border border-gray-100 dark:border-gray-800 p-4 flex items-start gap-4">
-            <img src={visionImg} alt="vision" className="w-16 h-16 object-cover rounded-md flex-none" />
-            <div>
-              <h3 className="font-heading font-semibold text-heading dark:text-darkheading">Our Vision</h3>
-              <p className="mt-2 text-sm text-paragraph dark:text-darkparagraph">
-                To set the standard for business web presence — combining beauty, accessibility, and maintainability in every project.
-              </p>
-            </div>
-          </article>
+        {/* Mission / Vision */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-14">
+          {[{ img: missionImg, title: "Our Mission", text: "To deliver future-proof digital experiences through thoughtful design, robust architecture, and seamless performance." },
+            { img: visionImg, title: "Our Vision", text: "To set the standard for business web presence — combining beauty, accessibility, and maintainability in every project." }]
+            .map(({ img, title, text }, i) => (
+              <article key={i} className="rounded-xl overflow-hidden bg-white dark:bg-darkbg border border-gray-100 dark:border-gray-800 p-4 flex items-start gap-4">
+                <img src={img} alt={title} className="w-16 h-16 object-cover rounded-md flex-none" />
+                <div>
+                  <h3 className="font-heading text-xl md:text-2xl font-semibold text-heading dark:text-darkheading">
+                    {title}
+                  </h3>
+                  <p className="mt-4 text-base text-paragraph dark:text-darkparagraph leading-relaxed">
+                    {text}
+                  </p>
+                </div>
+              </article>
+            ))}
         </section>
 
-        {/* Values — compact grid */}
-        <section className="mb-12">
-          <h4 className="text-lg font-semibold mb-4 text-heading dark:text-darkheading">What drives us</h4>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* Values */}
+        <section className="mb-14">
+          <h4 className="text-xl md:text-2xl font-heading font-semibold mb-6 text-heading dark:text-darkheading">
+            What drives us
+          </h4>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {values.map((v, i) => (
-              <li
-                key={i}
-                className="flex items-start gap-3 bg-gradient-to-r from-accent/30 to-teal-500/30 dark:bg-darkbg border border-gray-100 dark:border-gray-800 rounded-lg p-3"
-              >
+              <li key={i} className="flex items-start gap-4 bg-gradient-to-r from-accent/30 to-teal-500/30 dark:bg-darkbg border border-gray-100 dark:border-gray-800 rounded-lg p-4">
                 <div className={`w-10 h-10 rounded-md flex items-center justify-center text-white ${v.accent} flex-none`}>
                   <v.Icon />
                 </div>
                 <div>
-                  <div className="font-medium text-heading dark:text-darkheading">{v.title}</div>
-                  <div className="text-sm text-paragraph dark:text-darkparagraph mt-1">{v.detail}</div>
+                  <div className="font-heading font-semibold text-heading dark:text-darkheading text-base md:text-lg">
+                    {v.title}
+                  </div>
+                  <div className="mt-2 text-base text-paragraph dark:text-darkparagraph leading-relaxed">
+                    {v.detail}
+                  </div>
                 </div>
               </li>
             ))}
           </ul>
         </section>
 
-        <section className="mb-14">
-          <div className=" bg-accent/50 dark:bg-darkbg border border-gray-100 dark:border-gray-800 rounded-lg p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        {/* CTA */}
+        <section className="mb-16">
+          <div className="bg-accent/50 dark:bg-darkbg border border-gray-100 dark:border-gray-800 rounded-lg p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <div className="font-semibold  text-heading dark:text-darkheading">Ready to automate your network?</div>
-              <div className="text-sm text-paragraph dark:text-darkparagraph mt-1">Talk to our architects about a pragmatic automation roadmap.</div>
+              <div className="font-heading font-semibold text-heading dark:text-darkheading text-lg md:text-xl">
+                Ready to automate your network?
+              </div>
+              <div className="mt-2 text-base text-paragraph dark:text-darkparagraph leading-relaxed">
+                Talk to our architects about a pragmatic automation roadmap.
+              </div>
             </div>
 
             <div className="flex gap-3">
               <a
                 href="mailto:info@kmztech.example"
-                className="px-4 py-2 rounded-md bg-accent text-white text-sm"
-                aria-label="Email"
+                className="px-4 py-2 rounded-md bg-accent text-white text-base font-semibold hover:scale-105 transition-transform duration-200"
               >
                 Email Us
               </a>
-
               <a
                 href="https://wa.me/971501234567"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-md bg-green-500 hover:bg-green-600 text-white text-sm"
-                aria-label="Chat on WhatsApp"
+                className="px-4 py-2 rounded-md bg-green-500 hover:bg-green-600 text-white text-base font-semibold"
               >
-                Send Hii on WhatsApp
+                WhatsApp
               </a>
-
               <a
                 href="tel:+971501234567"
-                className="px-4 py-2 rounded-md border border-gray-200 dark:border-gray-700 text-sm"
-                aria-label="Call us"
+                className="px-4 py-2 rounded-md border border-gray-200 dark:border-gray-700 text-base font-semibold"
               >
                 Call Now
               </a>
-
             </div>
           </div>
         </section>
       </div>
 
-      {/* Use existing Footer component full-width */}
+      {/* Footer */}
       <div className="w-full">
         <Footer />
       </div>

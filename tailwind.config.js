@@ -5,7 +5,6 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        outfit: ["Outfit", "sans-serif"],
         heading: ["Montserrat", "sans-serif"],
         body: ["Roboto Condensed", "sans-serif"],
       },

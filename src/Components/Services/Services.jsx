@@ -118,7 +118,7 @@ const Services = () => {
 
   const circumferenceFor = (r) => 2 * Math.PI * r;
 
-  return (
+  return ( 
     <section
       id="services"
       ref={sectionRef}
