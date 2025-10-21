@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaNetworkWired, FaHome, FaVideo, FaCogs } from "react-icons/fa";
+import { Player } from "@lottiefiles/react-lottie-player";
+import servicesBg from "../../assets/gear.json";
 
 const servicesData = [
   {
@@ -76,7 +78,6 @@ const Services = () => {
   const sectionRef = useRef(null);
   const [revealed, setRevealed] = useState(false);
 
-  // Entrance + progress animation when section enters viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -95,7 +96,6 @@ const Services = () => {
           if (progress < 1) requestAnimationFrame(animate);
         };
 
-        // Respect reduced motion
         const prefersReducedMotion = window.matchMedia(
           "(prefers-reduced-motion: reduce)"
         ).matches;
@@ -118,15 +118,31 @@ const Services = () => {
 
   const circumferenceFor = (r) => 2 * Math.PI * r;
 
-  return ( 
+  return (
     <section
       id="services"
       ref={sectionRef}
-      className="py-20 bg-bg dark:bg-darkbg text-text dark:text-darktext transition-colors duration-500"
+      className="relative py-20 text-text dark:text-darktext transition-colors duration-500 overflow-hidden"
     >
+      {/* Lottie Background */}
+      <Player
+        autoplay
+        loop
+        speed={0.25}
+        src={servicesBg}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: -2,
+          pointerEvents: "none",
+        }}
+      />
+      <div className="absolute inset-0 bg-white/80 dark:bg-black/70 z-[-1]" />
       {/* Heading */}
       <div
-        className={`container text-center mb-16 ${
+        className={`relative z-10 container text-center mb-16 ${
           revealed ? "animate-fadeUp" : "opacity-0"
         }`}
       >
@@ -144,9 +160,10 @@ const Services = () => {
         {servicesData.map(({ icon, title, description, items }, idx) => (
           <article
             key={idx}
-            className={`p-6 rounded-2xl shadow-lg bg-white dark:bg-darkbg border border-gray-200 dark:border-gray-700 flex flex-col ${
+            className={`p-6 rounded-2xl shadow-lg bg-white/70 dark:bg-darkbg/80 border border-gray-200 dark:border-gray-700 flex flex-col ${
               revealed ? "animate-scaleIn" : "opacity-0"
-            } [animation-delay:${idx * 120}ms]`}
+            }`}
+            style={{ animationDelay: `${idx * 120}ms` }}
           >
             <div className="mb-4">{icon}</div>
             <h3 className="text-xl font-heading font-semibold text-heading dark:text-darkheading mb-3">
@@ -188,7 +205,8 @@ const Services = () => {
       <div
         className={`container text-center ${
           revealed ? "animate-fadeUp" : "opacity-0"
-        } [animation-delay:200ms]`}
+        }`}
+        style={{ animationDelay: "200ms" }}
       >
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-heading dark:text-darkheading">
           Why Businesses Trust Us
@@ -211,21 +229,21 @@ const Services = () => {
                 key={idx}
                 className={`flex flex-col items-center bg-white dark:bg-darkbg border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow hover:-translate-y-1 transition ${
                   revealed ? "animate-scaleIn" : "opacity-0"
-                } [animation-delay:${idx * 120 + 200}ms]`}
+                }`}
+                style={{ animationDelay: `${idx * 120 + 200}ms` }}
               >
                 <div className="relative w-28 h-28 mb-4">
                   <svg viewBox="0 0 120 120" className="w-full h-full">
                     <defs>
                       <linearGradient
-                        id="progressGradient"
+                        id={`progressGradient${idx}`}
                         x1="0%"
                         y1="0%"
                         x2="100%"
                         y2="0%"
                       >
                         <stop offset="0%" stopColor="#00a2ff" />
-                        <stop offset="100%" stopColor="#14b8a6" />{" "}
-                        {/* teal-500 */}
+                        <stop offset="100%" stopColor="#14b8a6" />
                       </linearGradient>
                     </defs>
 
@@ -241,7 +259,7 @@ const Services = () => {
                       cx="60"
                       cy="60"
                       r={radius}
-                      stroke="url(#progressGradient)"
+                      stroke={`url(#progressGradient${idx})`}
                       strokeWidth="10"
                       fill="none"
                       style={{

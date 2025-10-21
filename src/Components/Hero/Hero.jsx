@@ -102,7 +102,7 @@ const Hero = () => {
           </ul>
         </div>
 
-        <h2 className="hero-subtitle mt-6 text-xl md:text-2xl font-medium text-white/90">
+        <h2 className="hero-subtitle mt-6 text-xl md:text-2xl font-bold text-white/90">
           SMART HOME & IT SOLUTION FOR YOUR WORLD
         </h2>
 
