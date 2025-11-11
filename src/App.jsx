@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import Preloader from "./Components/Preloader/Preloader";
 import ErrorBoundary from "./Components/ErrorBoundary/ErrorBoundary";
+import ScrollToTop from "./Components/ScrollToTop"; // <-- added
 
 // lazy imports
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
@@ -27,6 +28,7 @@ const App = () => {
 
       {loadingFinished && (
         <BrowserRouter>
+          <ScrollToTop />   {/* <-- ensures scroll resets on route change */}
           <Navbar />
           <ErrorBoundary>
             <Suspense fallback={<div className="container py-20 text-center">Loading…</div>}>

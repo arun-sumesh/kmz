@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
+import Footer from "../Footer/Footer";
 import contactImg from "../../assets/contact-hero.jpg"; // replace with your image path
 
 export default function Contact() {
@@ -16,7 +17,10 @@ export default function Contact() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setForm((prev) => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
+    setForm((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -45,11 +49,13 @@ export default function Contact() {
             Contact us
           </h1>
           <p className="mt-3 text-paragraph dark:text-darkparagraph">
-            Tell us what you need. We’ll design the right solution for your space.
+            Tell us what you need. We’ll design the right solution for your
+            space.
           </p>
           {fromSolution && (
             <p className="mt-2 text-sm text-accent">
-              Inquiry context: <span className="font-semibold">{fromSolution}</span>
+              Inquiry context:{" "}
+              <span className="font-semibold">{fromSolution}</span>
             </p>
           )}
         </header>
@@ -159,8 +165,12 @@ export default function Contact() {
                   onChange={handleChange}
                   className="mt-1 h-4 w-4 rounded border-white/20 bg-white/20 text-accent focus:ring-accent"
                 />
-                <label htmlFor="consent" className="text-sm text-paragraph dark:text-darkparagraph">
-                  I agree to be contacted regarding my inquiry. We never share your details.
+                <label
+                  htmlFor="consent"
+                  className="text-sm text-paragraph dark:text-darkparagraph"
+                >
+                  I agree to be contacted regarding my inquiry. We never share
+                  your details.
                 </label>
               </div>
 
@@ -180,19 +190,29 @@ export default function Contact() {
             {/* Contact details */}
             <div className="mt-6 grid gap-2 text-sm text-paragraph dark:text-darkparagraph">
               <div>
-                <span className="font-medium text-heading dark:text-darkheading">Email:</span>{" "}
+                <span className="font-medium text-heading dark:text-darkheading">
+                  Email:
+                </span>{" "}
                 info@kmztech.ae
               </div>
               <div>
-                <span className="font-medium text-heading dark:text-darkheading">Phone:</span>{" "}
+                <span className="font-medium text-heading dark:text-darkheading">
+                  Phone:
+                </span>{" "}
                 +971 564 112 322
               </div>
               <div>
-                <span className="font-medium text-heading dark:text-darkheading">Location:</span>{" "}
+                <span className="font-medium text-heading dark:text-darkheading">
+                  Location:
+                </span>{" "}
                 Dubai, United Arab Emirates
               </div>
             </div>
           </div>
+        </div>
+        {/* Footer */}
+        <div className="w-full">
+          <Footer />
         </div>
       </div>
     </section>

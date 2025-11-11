@@ -1,9 +1,16 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { FaSitemap, FaHome, FaDoorOpen, FaWifi, FaCameraRetro } from "react-icons/fa";
+import {
+  FaSitemap,
+  FaHome,
+  FaDoorOpen,
+  FaWifi,
+  FaCameraRetro,
+} from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { solutionsList } from "../../utils/solutions-data";
+import Footer from "../Footer/Footer";
 
 const ICONS = {
   sitemap: FaSitemap,
@@ -13,12 +20,12 @@ const ICONS = {
   camera: FaCameraRetro,
 };
 
+// 🔧 Pure fade-in with stagger
 const cardVariant = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0 },
   visible: (i = 0) => ({
     opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.08, duration: 0.4, ease: "easeOut" },
+    transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
   }),
 };
 
@@ -30,15 +37,27 @@ export default function Solutions() {
   return (
     <main className="min-h-screen bg-bg dark:bg-darkbg text-text dark:text-darktext font-outfit">
       <section className="max-w-6xl mx-auto px-6 py-12">
-        <header className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-heading font-extrabold text-heading dark:text-darkheading">
+        <header id="services" className="text-center mb-12">
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-3xl md:text-4xl font-heading font-extrabold text-heading dark:text-darkheading"
+          >
             Our Solutions
-          </h1>
-          <p className="mt-3 text-base md:text-lg text-paragraph dark:text-darkparagraph max-w-2xl mx-auto">
-            Practical, deployable solutions for network infrastructure, smart homes, wireless connectivity and video surveillance.
-          </p>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+            className="mt-3 text-base md:text-lg text-paragraph dark:text-darkparagraph max-w-2xl mx-auto"
+          >
+            Practical, deployable solutions for network infrastructure, smart
+            homes, wireless connectivity and video surveillance.
+          </motion.p>
         </header>
 
+        {/* Grid of solution cards */}
         <div className="grid gap-6 md:grid-cols-3">
           {solutionsList.map((s, idx) => {
             const Icon = ICONS[s.iconKey] || FaSitemap;
@@ -91,15 +110,16 @@ export default function Solutions() {
           })}
         </div>
 
+        {/* Expanded detail view */}
         <div className="mt-12">
           <AnimatePresence mode="wait">
             {activeItem && (
               <motion.section
                 key={activeItem.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.35 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
                 className="bg-white/60 dark:bg-white/5 border border-white/10 rounded-2xl p-8 shadow"
               >
                 <div className="flex flex-col md:flex-row items-start gap-6">
@@ -110,7 +130,7 @@ export default function Solutions() {
                         <motion.div
                           initial={{ scale: 0.8, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
-                          transition={{ duration: 0.3 }}
+                          transition={{ duration: 0.4 }}
                         >
                           <IconComponent className="w-8 h-8" />
                         </motion.div>
@@ -123,9 +143,14 @@ export default function Solutions() {
                       {activeItem.title}
                     </h2>
                     {activeItem.summary && (
-                      <p className="mt-2 text-paragraph dark:text-darkparagraph">
+                      <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="mt-2 text-paragraph dark:text-darkparagraph"
+                      >
                         {activeItem.summary}
-                      </p>
+                      </motion.p>
                     )}
 
                     {Array.isArray(activeItem.details) && (
@@ -133,9 +158,9 @@ export default function Solutions() {
                         {activeItem.details.map((d) => (
                           <motion.article
                             key={d.slug}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3 }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
                             className="p-4 rounded border border-white/10 bg-transparent hover:bg-white/10 transition"
                           >
                             <h3 className="font-semibold text-heading dark:text-darkheading">
@@ -154,7 +179,7 @@ export default function Solutions() {
                                 loading="lazy"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ duration: 0.4 }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
                               />
                             )}
                           </motion.article>
@@ -182,6 +207,11 @@ export default function Solutions() {
               </motion.section>
             )}
           </AnimatePresence>
+        </div>
+
+        {/* Footer */}
+        <div className="w-full">
+          <Footer />
         </div>
       </section>
     </main>

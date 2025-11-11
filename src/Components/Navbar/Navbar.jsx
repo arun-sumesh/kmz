@@ -30,9 +30,9 @@ export default function Navbar() {
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
-    console.log("Theme changed to:", theme);
   }, [theme]);
 
+  // Track active section with IntersectionObserver
   useEffect(() => {
     const observers = SECTION_IDS.map((id) => {
       const el = document.getElementById(id);
@@ -47,6 +47,7 @@ export default function Navbar() {
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
+  // Close menu on resize or Escape
   useEffect(() => {
     const onResize = () => {
       if (window.innerWidth >= 768) setMenuActive(false);
@@ -62,6 +63,7 @@ export default function Navbar() {
     };
   }, []);
 
+  // Smooth scroll handler
   const handleLinkClick = (e, targetId) => {
     e.preventDefault();
     const el = document.getElementById(targetId);
@@ -78,13 +80,18 @@ export default function Navbar() {
   const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
   const toggleMenu = () => setMenuActive((m) => !m);
 
+  // Unified navLinks structure
   const navLinks = [
-    { id: "hero", label: "Home", type: "section" },
-    { id: "services", label: "What We Do", type: "section" },
-    { id: "/solutions", label: "Our Solutions", type: "route" },
-    { id: "/about", label: "About Us", type: "route" },
-    { id: "/contact", label: "Contact", type: "route" },
-  ];
+  // Section links (on the home page)
+  { path: "/", section: "hero", label: "Home" },
+  { path: "/", section: "services", label: "What We Do" },
+
+  // Route links (navigate to other pages)
+  { path: "/solutions", label: "Our Solutions" },
+  { path: "/about", label: "About Us" },
+  { path: "/contact", label: "Contact" },
+];
+
 
   return (
     <nav className="sticky top-0 z-50 bg-white dark:bg-darkbg shadow transition-all duration-700 ease-in-out">
@@ -93,41 +100,46 @@ export default function Navbar() {
           <img src={logo} alt="KMZ Tech logo" className="w-28 h-auto transition-transform duration-300 hover:scale-105" />
         </Link>
 
+        {/* Desktop menu */}
         <ul className="hidden md:flex gap-8 font-heading items-center">
           {navLinks.map((link) => {
-            const isRoute = link.type === "route";
-            const isActiveRoute = isRoute && location.pathname.startsWith(link.id);
-            const isActiveSection = link.type === "section" && isOnHome && activeSectionId === link.id;
+            const isSection = !!link.section;
+            const isActiveRoute = !isSection && location.pathname.startsWith(link.path);
+            const isActiveSection = isSection && isOnHome && activeSectionId === link.section;
+
             const commonClass = `px-1 py-1 focus:outline-none focus:ring-2 focus:ring-accent rounded transition duration-300 ${
-              isActiveRoute || isActiveSection ? "text-accent underline underline-offset-4" : "text-text dark:text-darktext hover:text-accent"
+              isActiveRoute || isActiveSection
+                ? "text-accent underline underline-offset-4"
+                : "text-text dark:text-darktext hover:text-accent"
             }`;
 
             return (
-              <li key={link.id}>
-                {isRoute ? (
-                  <Link to={link.id} onClick={() => setMenuActive(false)} className={commonClass}>
-                    {link.label}
-                  </Link>
-                ) : (
+              <li key={link.label}>
+                {isSection ? (
                   <a
-                    href={`#${link.id}`}
+                    href={`#${link.section}`}
                     onClick={(e) => {
                       if (!isOnHome) {
                         e.preventDefault();
-                        window.location.href = `/#${link.id}`;
+                        window.location.href = `/#${link.section}`;
                         return;
                       }
-                      handleLinkClick(e, link.id);
+                      handleLinkClick(e, link.section);
                     }}
                     className={commonClass}
                   >
                     {link.label}
                   </a>
+                ) : (
+                  <Link to={link.path} onClick={() => setMenuActive(false)} className={commonClass}>
+                    {link.label}
+                  </Link>
                 )}
               </li>
             );
           })}
 
+          {/* Theme toggle */}
           <li>
             <button
               onClick={toggleTheme}
@@ -143,12 +155,9 @@ export default function Navbar() {
           </li>
         </ul>
 
+        {/* Mobile menu toggle */}
         <div className="flex items-center gap-3 md:hidden">
-          <button
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            className="relative w-9 h-5 rounded-full border-2 border-accent focus:outline-none focus:ring-2 focus:ring-accent overflow-hidden"
-          >
+          <button onClick={toggleTheme} aria-label="Toggle theme" className="relative w-9 h-5 rounded-full border-2 border-accent focus:outline-none focus:ring-2 focus:ring-accent overflow-hidden">
             <span
               className={`absolute top-0.5 left-0.5 w-3 h-3 rounded-full bg-accent transition-transform duration-300 ${
                 theme === "dark" ? "translate-x-5" : "translate-x-0"
@@ -166,6 +175,7 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Mobile menu */}
       <div
         id="mobile-menu"
         className={`md:hidden absolute left-0 w-full bg-white dark:bg-darkbg shadow-lg rounded-b-lg px-6 py-6 transition-all duration-500 ease-in-out ${
@@ -174,30 +184,30 @@ export default function Navbar() {
       >
         <ul className="flex flex-col gap-4">
           {navLinks.map((link) => (
-            <li key={link.id}>
-              {link.type === "route" ? (
-                <Link
-                  to={link.id}
-                  onClick={() => setMenuActive(false)}
-                  className="block text-center text-lg text-text dark:text-darktext hover:text-accent"
-                >
-                  {link.label}
-                </Link>
-              ) : (
+            <li key={link.label}>
+              {link.section ? (
                 <a
-                  href={`#${link.id}`}
+                  href={`#${link.section}`}
                   onClick={(e) => {
                     if (!isOnHome) {
                       e.preventDefault();
-                      window.location.href = `/#${link.id}`;
+                      window.location.href = `/#${link.section}`;
                       return;
                     }
-                    handleLinkClick(e, link.id);
+                    handleLinkClick(e, link.section);
                   }}
                   className="block text-center text-lg text-text dark:text-darktext hover:text-accent"
                 >
                   {link.label}
                 </a>
+              ) : (
+                <Link
+                  to={link.path}
+                  onClick={() => setMenuActive(false)}
+                  className="block text-center text-lg text-text dark:text-darktext hover:text-accent"
+                >
+                  {link.label}
+                </Link>
               )}
             </li>
           ))}

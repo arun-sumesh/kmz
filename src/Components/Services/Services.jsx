@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { FaNetworkWired, FaHome, FaVideo, FaCogs } from "react-icons/fa";
 import { Player } from "@lottiefiles/react-lottie-player";
 import servicesBg from "../../assets/gear.json";
-
+// what_we_do
 const servicesData = [
   {
     icon: <FaNetworkWired className="text-accent text-4xl" />,
@@ -122,7 +122,7 @@ const Services = () => {
     <section
       id="services"
       ref={sectionRef}
-      className="relative py-20 text-text dark:text-darktext transition-colors duration-500 overflow-hidden"
+      className="relative py-20 text-text dark:text-darktext transition-colors duration-500 overflow-hidden what_we_do"
     >
       {/* Lottie Background */}
       <Player
@@ -149,6 +149,7 @@ const Services = () => {
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-heading dark:text-darkheading">
           What We Do
         </h2>
+
         <p className="mt-4 text-lg text-paragraph dark:text-darkparagraph max-w-3xl mx-auto">
           We provide cutting-edge solutions for IT networking, automation, and
           security to make your home and business smarter and safer.

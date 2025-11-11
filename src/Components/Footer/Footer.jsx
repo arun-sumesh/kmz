@@ -142,7 +142,7 @@ export default function Footer() {
 
           <div className="flex items-center gap-4">
             <a
-              href="https://www.linkedin.com"
+              href="https://ae.linkedin.com/in/arun-sumesh-b3a502385"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/6 hover:bg-white/10 transition"
