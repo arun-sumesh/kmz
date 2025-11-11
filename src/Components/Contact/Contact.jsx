@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import Footer from "../Footer/Footer";
 import contactImg from "../../assets/contact-hero.jpg"; // replace with your image path
 
 export default function Contact() {
