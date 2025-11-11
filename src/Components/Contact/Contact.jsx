@@ -210,10 +210,6 @@ export default function Contact() {
             </div>
           </div>
         </div>
-        {/* Footer */}
-        <div className="w-full">
-          <Footer />
-        </div>
       </div>
     </section>
   );
