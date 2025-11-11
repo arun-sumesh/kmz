@@ -209,11 +209,12 @@ export default function Solutions() {
           </AnimatePresence>
         </div>
 
-        {/* Footer */}
+        
+      </section>
+      {/* Footer */}
         <div className="w-full">
           <Footer />
         </div>
-      </section>
     </main>
   );
 }
