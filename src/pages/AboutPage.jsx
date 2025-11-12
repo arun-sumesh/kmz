@@ -105,10 +105,10 @@ export default function AboutPageMinimal() {
           <div className="bg-accent/50 dark:bg-darkbg border border-gray-100 dark:border-gray-800 rounded-lg p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
               <div className="font-heading font-semibold text-heading dark:text-darkheading text-lg md:text-xl">
-                Ready to automate your network?
+                Lets Talk Business!
               </div>
               <div className="mt-2 text-base text-paragraph dark:text-darkparagraph leading-relaxed">
-                Talk to our architects about a pragmatic automation roadmap.
+                Talk to our Engineers about your needs.
               </div>
             </div>
 
@@ -120,7 +120,7 @@ export default function AboutPageMinimal() {
                 Email Us
               </a>
               <a
-                href="https://wa.me/971501234567"
+                href="https://wa.me/971564112322"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-md bg-green-500 hover:bg-green-600 text-white text-base font-semibold"
@@ -128,7 +128,7 @@ export default function AboutPageMinimal() {
                 WhatsApp
               </a>
               <a
-                href="tel:+971501234567"
+                href="tel:+971564112322"
                 className="px-4 py-2 rounded-md border border-gray-200 dark:border-gray-700 text-base font-semibold"
               >
                 Call Now
