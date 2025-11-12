@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import contactImg from "../../assets/contact-hero.jpg"; // replace with your image path
+import contactImg from "../../assets/contact-hero.jpg";
 
 export default function Contact() {
   const location = useLocation();

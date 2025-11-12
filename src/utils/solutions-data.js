@@ -1,12 +1,3 @@
-// src/utils/solutions-data.js
-
-// Each solution has:
-// - id: unique string
-// - iconKey: one of "sitemap" | "home" | "door" | "wifi" | "camera"
-// - title: main heading
-// - summary: short description
-// - details: array of topics with slug, subtitle, content[], and optional img
-// - ctaAnchor: link target for CTA button
 
 export const solutionsList = [
   {
@@ -24,7 +15,7 @@ export const solutionsList = [
           "Pathway planning, labeling, and as‑built documentation.",
           "Certified installation with Fluke/OTDR test reports.",
         ],
-        img: "/brands/cabling.jpg",
+        img: "/ServicesImg/structure-cabling dubai.jpg",
       },
       {
         slug: "testing",
@@ -32,8 +23,9 @@ export const solutionsList = [
         content: [
           "Comprehensive copper and fiber validation.",
           "Detailed certification reports included at handover.",
+          "Qualified testers."
         ],
-        img: "/brands/testing.jpg",
+        img: "ServicesImg/fluke.jpg",
       },
     ],
     ctaAnchor: "#contact",
@@ -52,7 +44,7 @@ export const solutionsList = [
           "Scene‑based lighting and HVAC schedules.",
           "Energy optimization routines with remote access.",
         ],
-        img: "/brands/home-automation.jpg",
+        img: "/ServicesImg/lighting automation dubai.jpg",
       },
       {
         slug: "integration",
@@ -61,7 +53,7 @@ export const solutionsList = [
           "Voice, mobile, and wall‑panel control.",
           "Secure cloud integrations and local automations.",
         ],
-        img: "/brands/integration.jpg",
+        img: "/ServicesImg/automation dubai.jpg",
       },
     ],
     ctaAnchor: "#contact",
@@ -80,7 +72,7 @@ export const solutionsList = [
           "Badge and mobile credentialing.",
           "Role‑based and time‑of‑day access policies.",
         ],
-        img: "/brands/access-control.jpg",
+        img: "/ServicesImg/access control dubai.jpg",
       },
       {
         slug: "integration-audit",
@@ -89,7 +81,7 @@ export const solutionsList = [
           "CCTV integration and event exports.",
           "Full audit logs for compliance and forensics.",
         ],
-        img: "/brands/audit.jpg",
+        img: "/ServicesImg/access control work dubai.jpg",
       },
     ],
     ctaAnchor: "#contact",
@@ -108,7 +100,7 @@ export const solutionsList = [
           "Predictive planning with heatmaps and capacity analysis.",
           "AP placement and channel planning to minimize interference.",
         ],
-        img: "/brands/wireless.jpg",
+        img: "/ServicesImg/Capacity Area Planning Example Dubai kmz tech.png",
       },
     ],
     ctaAnchor: "#contact",
@@ -127,7 +119,7 @@ export const solutionsList = [
           "IP, low‑light, and analytics‑ready cameras.",
           "Retention planning: NVR, edge, and cloud options.",
         ],
-        img: "/brands/cctv.jpg",
+        img: "/ServicesImg/cctv camera work in dubai.jpg",
       },
     ],
     ctaAnchor: "#contact",

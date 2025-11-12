@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   FaSitemap,
   FaHome,
@@ -32,6 +32,18 @@ const cardVariant = {
 export default function Solutions() {
   const [activeId, setActiveId] = useState(null);
   const activeItem = solutionsList.find((s) => s.id === activeId);
+
+  // Refs for scrolling
+  const detailRef = useRef(null);
+  const gridRef = useRef(null);
+
+  // Scroll to detail when opened
+  useEffect(() => {
+    if (activeItem && detailRef.current) {
+      detailRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [activeItem]);
+
   const toggle = (id) => setActiveId((cur) => (cur === id ? null : id));
 
   return (
@@ -58,7 +70,7 @@ export default function Solutions() {
         </header>
 
         {/* Grid of solution cards */}
-        <div className="grid gap-6 md:grid-cols-3">
+        <div ref={gridRef} className="grid gap-6 md:grid-cols-3">
           {solutionsList.map((s, idx) => {
             const Icon = ICONS[s.iconKey] || FaSitemap;
             return (
@@ -75,7 +87,7 @@ export default function Solutions() {
                 <div className="flex items-start gap-4">
                   <motion.div
                     whileHover={{ rotate: 8, scale: 1.1 }}
-                    className="w-12 h-12 flex items-center justify-center rounded-lg bg-accent/10 text-accent"
+                    className="w-12 h-12 flex items-center justify-center rounded-full bg-accent/10 text-accent"
                   >
                     <Icon className="w-6 h-6" />
                   </motion.div>
@@ -110,20 +122,21 @@ export default function Solutions() {
           })}
         </div>
 
-        {/* Expanded detail view */}
+        {/* Expanded detail view BELOW the grid */}
         <div className="mt-12">
           <AnimatePresence mode="wait">
             {activeItem && (
               <motion.section
+                ref={detailRef}
                 key={activeItem.id}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
                 className="bg-white/60 dark:bg-white/5 border border-white/10 rounded-2xl p-8 shadow"
               >
                 <div className="flex flex-col md:flex-row items-start gap-6">
-                  <div className="w-16 h-16 flex items-center justify-center rounded-lg bg-accent/10 text-accent text-2xl">
+                  <div className="w-16 h-16 flex items-center justify-center rounded-full bg-accent/10 text-accent text-2xl">
                     {(() => {
                       const IconComponent = ICONS[activeItem.iconKey];
                       return IconComponent ? (
@@ -179,7 +192,7 @@ export default function Solutions() {
                                 loading="lazy"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ duration: 0.8, ease: "easeOut" }}
+                                transition={{ duration: 0.5, ease: "easeOut" }}
                               />
                             )}
                           </motion.article>
@@ -196,7 +209,15 @@ export default function Solutions() {
                         Request site survey
                       </Link>
                       <button
-                        onClick={() => setActiveId(null)}
+                        onClick={() => {
+                          setActiveId(null);
+                          if (gridRef.current) {
+                            gridRef.current.scrollIntoView({
+                              behavior: "smooth",
+                              block: "start",
+                            });
+                          }
+                        }}
                         className="px-4 py-2 rounded-full border border-white/10 hover:bg-white/5 transition"
                       >
                         Close
@@ -208,13 +229,12 @@ export default function Solutions() {
             )}
           </AnimatePresence>
         </div>
-
-        
       </section>
+
       {/* Footer */}
-        <div className="w-full">
-          <Footer />
-        </div>
+      <div className="w-full">
+        <Footer />
+      </div>
     </main>
   );
 }
